@@ -1,10 +1,10 @@
 # CommandLineParser
 # Introduction
-[1].CommandLineParser library adds the user defined command line options which accepts the short command , long command , short description ,long description and a  default value.
+[1].CommandLineParser library adds the user defined command line options which accepts the short command,long command,short description,long description and a default value.
 
 [2].This library parses the command line options and gives the corresponding value of a particular command.
 
-[3].The CommandLine parser Library supports custom help functionlity .
+[3].The CommandLine Parser Library supports custom help functionality.
 
 [4].The command line Options can be of the following forms :- 
 
@@ -16,13 +16,13 @@
     
 [5].Example 
 
-let say the, resgistred command is port . 
+Register a command say port 
  
-    obj.Addoptions("p", "port", "enter the port numbers", "port number must be of 4 digits",1234);
+    obj.AddOptions("p", "port", "enter the port numbers", "port number must be of 4 digits",1234);
  
 In  CommandPrompt
 
-    SampleApp.exe --port=324 425
+    SampleApp.exe --port=3241 4258
  
  Result 
     
@@ -67,18 +67,34 @@ In  CommandPrompt
 [2]. Visual Studio Community 2017 or any previous version
 [3]. Git for Windows or any git client (Optional)
 ## Part-B Building cmd_lib
-[1]. Make a build folder outside the library i.e. commandlineparser.
 
-     mkdir build 
-	 cd build 
-[2]. Build the Library. 
+ [1]. Setting  some of the required varibles.
 
-     cmake -Ax64 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="F:/Projects/CommandLine/install" -L ..
-	 cmake --build . --config Release --target install  
-[3]. For using in other projects/library.
+ a) Setting a Directory for building the library.
+            
+    set cmd_lib_BUILD_DIR=C:\commandlineparser
+
+b) Setting the Configuration of the build
     
-     cmake -Ax64 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="F:/Projects/CommandLine/install" -L ..
-	 cmake --build . --target install  
+    set CONFIG=Release
+
+[2]. Creating directory for building the libraray.
+
+     mkdir %cmd_lib_BUILD_DIR%
+
+[2]. Clone the repository
+	 
+	 cd  %cmd_lib_BUILD_DIR%
+	 git clone  https://github.com/inbangsa/CommandLine.git
+ 
+[3]. Build the Library  
+
+     cmake -Ax64 -DCMAKE_INSTALL_PREFIX="%cmd_lib_BUILD_DIR%\install" -L ..
+	 cmake --build . --clean-first --config %CONFIG% --target install   
+[3]. For using in other projects/library.
+
+     cmake -Ax64 -DCMAKE_INSTALL_PREFIX="%cmd_lib_BUILD_DIR%\install" -L ..
+	 cmake --build . --clean-first --config %CONFIG% --target install  
 This library has cmake build system which supports the find_package() functionlaity .
 
 #  Help Feature
