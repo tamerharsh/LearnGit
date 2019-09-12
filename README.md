@@ -7,24 +7,24 @@
 - The CommandLine Parser Library supports custom help functionality.
 
 - The command line Options can be of the following forms :- 
-
+    ```cpp
     --long_command=value
     --long_command value
     -short_command=value
     -short_command value
     -short_command (flag)
     --long_command (flag)
-
+    ```
 # Example
-- Register a command say port 
+- #### Register a command say port.
     ```cpp
     obj.Addoptions("p", "port", "enter the port numbers", "port number must be of 4 digits",1234);
      ```
-- In CommandPrompt
+- #### In CommandPrompt.
     ```cpp
     SampleApp.exe --port=3241 4258
     ```` 
-- Result 
+- #### Result.
    ```cpp 
     The value for port : 3248 4244
     ```
@@ -91,9 +91,9 @@
     ```
 - ####  Clone the repository.
     ``` cmake 
-	 cd  %cmd_lib_BUILD_DIR%
-	 git clone  https://github.com/inbangsa/CommandLine.git
-     ```
+	cd  %cmd_lib_BUILD_DIR%
+	git clone  https://github.com/inbangsa/CommandLine.git
+    ```
 ### [3]. Build Library. 
 ```cmake
 cmake -Ax64 -DCMAKE_INSTALL_PREFIX="%cmd_lib_BUILD_DIR%\install" -L ..
@@ -118,10 +118,14 @@ This library has three help menus which are described below:-
 - This library doesnot support the default value of type const char *. User may convert it to std::string .
 
 - Any usage of unregistered command options results in error.
+
 - Explicit instantiation of GetValue<type>() function is a must.
+
 - All the exceptions gives error defined using what, which can be printed to see the error. 
 
 # TODO
 - Passing initializer list or vector as default value.
+
 - Support const char * as data type for user defined options.
+
 - GTest (Unit Testing)
